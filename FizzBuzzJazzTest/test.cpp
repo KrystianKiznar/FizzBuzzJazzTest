@@ -1,5 +1,19 @@
 #include "pch.h"
 #include"../FizzBuzzJazz/FizzBuzz.h"
+#include <tuple>
+#include <vector>
+
+
+class FizzBuzzTest 
+	: public testing::TestWithParam<std::tuple<int, std::string>> {
+
+private:
+	std::vector <std::tuple<int, std::string>> testVector;
+public:
+
+	FizzBuzzTest();
+};
+
 
 void checkFizzBuzz(int value, std::string expect) {
 	std::string result = FizzBuzz(value);
@@ -85,4 +99,27 @@ TEST(FizzBuzzJazzTest, divisible140ResultFizzBuzzJazz) {
 
 TEST(FizzBuzzJazzTest, divisible840ResultFizzBuzzJazz) {
 	checkFizzBuzz(840, "FizzBuzzJazz");
+}
+
+FizzBuzzTest::FizzBuzzTest() {
+	testVector.push_back(std::tuple <int, std::string> (840, "FizzBuzzJazz"));
+	testVector.push_back(std::tuple <int, std::string> (105, "FizzBuzzJazz"));
+	testVector.push_back(std::tuple <int, std::string> (140, "BuzzJazz"));
+	testVector.push_back(std::tuple <int, std::string> (35, "BuzzJazz"));
+	testVector.push_back(std::tuple <int, std::string> (42, "FizzJazz"));
+	testVector.push_back(std::tuple <int, std::string> (21, "FizzJazz"));
+	testVector.push_back(std::tuple <int, std::string> (60, "FizzBuzz"));
+	testVector.push_back(std::tuple <int, std::string> (15, "FizzBuzz"));
+	testVector.push_back(std::tuple <int, std::string> (216231, "Fizz"));
+	testVector.push_back(std::tuple <int, std::string> (14, "Jazz"));
+	testVector.push_back(std::tuple <int, std::string> (7, "Jazz"));
+	testVector.push_back(std::tuple <int, std::string> (21625, "Buzz"));
+	testVector.push_back(std::tuple <int, std::string> (21624, "Fizz")); 
+	testVector.push_back(std::tuple <int, std::string> (10, "Buzz")); 
+	testVector.push_back(std::tuple <int, std::string> (6, "Fizz"));
+	testVector.push_back(std::tuple <int, std::string> (5, "Buzz"));
+	testVector.push_back(std::tuple <int, std::string> (3, "Fizz"));
+	testVector.push_back(std::tuple <int, std::string> (2, "2"));
+	testVector.push_back(std::tuple <int, std::string> (21629, "21629"));
+	testVector.push_back(std::tuple <int, std::string> (1, "1"));
 }
